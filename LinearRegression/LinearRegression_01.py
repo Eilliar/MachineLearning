@@ -21,8 +21,8 @@ alpha = .1
 plt.figure(1)
 plt.ion()
 
-theta0 = 2.
-theta1 = 2.
+theta0 = 8.
+theta1 = -5.
 
 
 # Compute h_theta
