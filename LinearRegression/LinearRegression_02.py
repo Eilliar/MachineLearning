@@ -10,6 +10,7 @@ Created on Wed Jul 15 12:53:53 2015
 
 import numpy as np
 import matplotlib.pyplot as plt
+plt.close("all")
 
 def loadDataSet(fileName):
     numFeat = len(open(fileName).readline().split('\t')) - 1
@@ -28,7 +29,7 @@ def loadDataSet(fileName):
 data,y = loadDataSet("ex0.txt")
 x = data[:,1]
 
-plt.close("all")
+
 plt.figure(1)
 plt.plot(x, y, 'ro')
 plt.show()
@@ -52,7 +53,7 @@ h_theta = theta0 + theta1*x
 # Compute the Cost Function
 a = (h_theta - y)**2
 J = (1/(2*m))*np.sum(a)
-
+print "Cost: ", J
 
 for i in range(1, 100):
     #Gradient Descent Algorithm
@@ -61,7 +62,11 @@ for i in range(1, 100):
     theta0 = np.copy(theta0_new)
     theta1 = np.copy(theta1_new)
     h_theta = theta0 + theta1*x
-
+    
+    # Print Cost
+    a = (h_theta - y)**2
+    J = (1/(2*m))*np.sum(a)
+    print "Cost: ", J
     #Show the fitting process
     plt.figure(2)
     plt.clf()
@@ -71,3 +76,6 @@ for i in range(1, 100):
     plt.draw()
     plt.show()
     plt.pause(0.01)
+    
+#Print Results
+print "(Theta0, Theta1): ", theta0, theta1
