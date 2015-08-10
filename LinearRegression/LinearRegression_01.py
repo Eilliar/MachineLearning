@@ -9,20 +9,20 @@ Date: May 19, 2015
 
 import numpy as np
 import matplotlib.pyplot as plt
-
+plt.close('all')
 
 debug = True
 x = np.array([0., 1, 2, 3])
 y = np.array([4., 7, 7, 8])
 m = float(len(x)) # make sure to work with float number always
 alpha = .1
-
+error = .01
 # turn on interactive plot mode
 plt.figure(1)
 plt.ion()
 
-theta0 = 8.
-theta1 = -5.
+theta0 = 0.
+theta1 = 0.
 
 
 # Compute h_theta
@@ -38,6 +38,8 @@ for i in range(1, 200):
     theta1_new = theta1 - alpha*(1/m)*np.sum(np.dot((h_theta - y), x))
     if debug:
         print "(Theta0, Theta1): ", theta0_new, theta1_new
+    #if (np.abs(theta0-theta0_new) < error) and (np.abs(theta1-theta1_new)< error):
+    #    break
     theta0 = np.copy(theta0_new)
     theta1 = np.copy(theta1_new)
     h_theta = theta0 + theta1*x

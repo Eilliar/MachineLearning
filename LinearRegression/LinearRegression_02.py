@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Linear Regression
+Example 02 - Load data from a txt file
 
 Created on Wed Jul 15 12:53:53 2015
 
@@ -44,7 +45,7 @@ alpha = 0.1
 # Size of data set
 m = float(len(x))
 # Define Hypothesis
-theta0 = 0.
+theta0 = 1.
 theta1 = 0.
 # Compute h_theta
 h_theta = theta0 + theta1*x
@@ -54,6 +55,7 @@ J = (1/(2*m))*np.sum(a)
 
 
 for i in range(1, 100):
+    #Gradient Descent Algorithm
     theta0_new = theta0 -alpha*(1/m)*np.sum((h_theta - y))
     theta1_new = theta1 - alpha*(1/m)*np.sum(np.dot((h_theta - y), x))
     theta0 = np.copy(theta0_new)
@@ -64,7 +66,7 @@ for i in range(1, 100):
     plt.figure(2)
     plt.clf()
     plt.plot(x, y, 'bo')
-    plt.axis([0, 1, 2.5, 5])
+    plt.axis([-0.2, 1.2, 2.5, 5])
     plt.plot(x, h_theta, 'r--')
     plt.draw()
     plt.show()
